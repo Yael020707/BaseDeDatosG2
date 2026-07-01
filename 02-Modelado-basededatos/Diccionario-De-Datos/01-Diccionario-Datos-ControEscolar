@@ -1,0 +1,103 @@
+# Diccionario de datos de la base de datos control escolar 
+
+1. Informacion general
+
+### Tabla 3: 2 columnas y 2 filas
+
+|  Elemneto | Valor             |
+| :---      | :---              | 
+| Proyecto  | Control Escolar   |
+| Version   | 1.0               |
+| Fecha     | Junio  2026       |
+| Elaboro   | Kevin Yael Barron |
+| SGBD      | SQLSERVER         |
+
+2. Descripcion del la base de datos 
+
+El base de datos administra:
+
+- Carpeta
+- Alumno
+- Profesor
+- Materia
+- Grupo
+- Inscripcion
+
+Permite controlar la oferta academica y la inscripcion de estudiante 
+
+3. Catalogo de restriciones utilizadas
+
+|  Elemneto | Significado                      |
+| PK        | Primary key                      |          
+| FK        | Foreign key                      |
+| NN        | Not Null                         |
+| UQ        | Unique                           |
+| AI        | AutoIncrement o Identity         |
+| CK        | Check                            |
+| DF        | Default                          |
+
+4. Diccionario de datos
+
+**Tabla:**  _Carrera_
+
+**Descripcion**
+Almacena las carreras ofertadas para esa universisda 
+| Campo                | Tipo    | Longitud | Restriciones | Descripcion                      |
+| IDCarrera            | INT     | -        | PK,AI,NN     | Indentificar unico de la carrera |
+| Nombre               | Varchar | 100      | UQ,NN        | Nombre de la carrera             |
+| DuracionCuartimestre | INT     | -        | NN,CK (>0)   | Duracion en cuatrimestre         |
+
+---
+
+**Tabla:**  _Alumno_
+
+**Descripcion**
+Almacena la informacion de los estudiantes  
+| Campo                | Tipo    | Longitud | Restriciones | Descripcion                      |
+| IDAlumno             | INT     | -        | PK,AI,NN     | Indentificar del alumno          |
+| Matricula            | Varchar | 10       | UQ,NN        | Matricula institucional          |
+| Nombre               | Varchar | 50       | NN           | Nombre de alumno                 |
+| ApellidoPaterno      | Varchar | 50       | NN           | Apellido Paterno                 |
+| ApellidoMaterno      | Varchar | 50       | NN           | Apellido Materno                 |
+| Correo               | Varchar | 100      | NN,UQ        | Correo Institucional             |
+| FechaNacimient       | Date    | -        | NN           | Fecha Nacimiento                 |
+| IDCarrera            | INT     | -        | NN,FK        | Carrera a la que pertenece       |
+
+---
+
+Todo: Documentar las siguientes tablas
+
+5. Relaciones de la bases de datos
+| Relacio               | Cardinalidad | Descripcion                                  |
+| Carrera -> alumno     | 1:N          | Una carrera tiene muchos alumnos             |
+| Carrera -> Materia    | 1:N          | Una carrera tien muchas materias             |
+| Profesor -> Grupo     | 1:N          | Una profesor puede impartir en varios grupos |
+| Materia -> Grupo      | 1:N          |Una materia puede abrirse en varios grupos    |
+| Alumno -> Inscripcion | 1:N          |una alumno puede tener varias inscripcion     |
+| Grupo -> Inscripcion  | 1:N          |un grupo puede tener muchos alumnos           |
+
+6. Matriz de claves foraneas
+| Tabla    | Campo FK   | Referencias          |
+| alumno   | IdCarrera  | Carrera(IdCarrera)   |
+|  Materia | IdCarrera  | Carrera(IdCarrera)   |
+|  Grupo   | IdProfesor | Profesor(IdProfesor) |
+|  Grupo   | IdMateria  | Materia(IdMateria)   |
+|  Inscripcion   | IdAlumno  | Alumno(IdAlumno)   |
+|  Inscripcion   | IdGrupo  | Grupo(IdGrupo)   |
+
+7. Intergridad referencial
+
+| Clave | Regla                                                       |
+| IR-01 | No se puede regristra un alumno con una carrera inexistente |
+| IR-02 | No se puede crear un grupo para una materia inexistnte      |
+| IR-03 | No se puede crear un grupo para una profesor inexistnte     |
+
+8. Reglas del negocio
+
+| Clave | Regla                                                       |
+| RN-01 | Un alumno pertenece a una sola carrera     |
+| RN-02 | Una carrera puede tener muchos alumons     |
+| Rn-03 | una carrera puede tener muchas materia     |
+| Rn-04 | Un profesor puede  impartir varios grupos  |
+
+![Ejericicio1ER](../img/)
