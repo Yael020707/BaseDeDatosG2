@@ -1,3 +1,31 @@
+## ejercicio 1.
+un hospital registra informacion de sus pacinete:
+> De cada paciente se almacena:
+- numero de paciente que lo identifica
+- nombre
+- fecha de nacimiento
+
+> De cada expendiente medico se alamcena
+- numero de expediente
+- fecha de apertura 
+- tipo de sangre
+
+> Reglas del negocio
+1. cada paciente debe tener exactamente un expediente medico
+2. cada expediente medico pertenece a un unico paciente
+3. no puede existor un expendiente sin paciente
+4. no puede existir un paciente sin expediente 
+
+> Que se debe realizar:
+
+- identificar las entidades
+- identificar atributos
+- dibujar las relaciones
+- determinar la cardinalidad
+- determinar la participacion de cada entidad
+
+![Ejercicio2](../img/ER/ER1.png)
+
 ## ejercicio 2.
 un universidad administra profesores y cursos
 
@@ -78,7 +106,7 @@ fecha de pedido
 7. el detalle del pedido no existe sin pedido
 8. el detalle del pedido no existe sin producto
 9. el detalle almacena la cantidad vendida y el precio de venta49
-![Ejercicio4](../img/ER/ER4.png)
+![Ejercicio4](../img/ER/ER4.2.png)
 
 ## ejercicio5
 1. The company is organized into departments. Each department has a unique name, a 
@@ -95,4 +123,4 @@ keep track of the direct supervisor of each employee (who is another employee).
 4. We want to keep track of the dependents of each employee for insurance purposes.We 
 keep each dependent's first name, sex, birth date, and relationship to the employee. 
  
-![Ejercicio5](../img/ER/ER.png)
+![Ejercicio5](../img/ER/ER5.png)
